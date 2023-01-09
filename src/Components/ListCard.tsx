@@ -4,7 +4,6 @@ import {
   CardActionArea,
   CardContent,
   CardHeader,
-  Chip,
   Typography,
 } from "@mui/material"
 import { FC } from "react"
@@ -22,13 +21,13 @@ const ListCard: FC<IListCardsProps> = ({ activeCard, userData }) => (
     sx={{
       justifyContent: "space-between",
       alignItems: "center",
-      backgroundColor: `${activeCard ? "red" : "white"}`,
+      backgroundColor: `${activeCard ? "lightblue" : "white"}`,
     }}
   >
     <CardActionArea
       sx={{
         display: "grid",
-        gridTemplateColumns: "1fr 2fr 1fr",
+        gridTemplateColumns: "1fr 2fr",
         "&:hover": {
           background: "rgb(7, 177, 77, 0.42)",
         },
@@ -43,7 +42,7 @@ const ListCard: FC<IListCardsProps> = ({ activeCard, userData }) => (
         subheader={parse(userData.id)}
         title={parse(userData.name)}
       />
-      <CardContent
+      {/* <CardContent
         sx={{
           display: "flex",
           justifyContent: "center",
@@ -58,7 +57,7 @@ const ListCard: FC<IListCardsProps> = ({ activeCard, userData }) => (
             color="success"
           />
         ))}
-      </CardContent>
+      </CardContent> */}
       <CardContent sx={{ textAlign: "right" }}>
         <Typography variant="body2" color="text.secondary">
           Address :{parse(userData.address)}
