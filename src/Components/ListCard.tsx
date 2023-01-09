@@ -7,18 +7,23 @@ import {
   Chip,
   Typography,
 } from "@mui/material"
-import React, { FC, useState } from "react"
+import React, { Dispatch, FC, SetStateAction, useState } from "react"
 import { red } from "@mui/material/colors"
 import parse from "html-react-parser"
 import { IUser } from "../Interfaces/User"
 
 interface IListCardsProps {
   userData: IUser
+  active: boolean
+  setSelected: Dispatch<SetStateAction<SetStateAction<IUser | undefined>>>
+  setHovered: Dispatch<SetStateAction<IUser | undefined>>
   // activeCard: boolean
   // onSelect: Functions
 }
+
 const ListCard: FC<IListCardsProps> = ({
   // activeCard,
+  active,
   userData,
 }) => (
   <Card
@@ -26,7 +31,7 @@ const ListCard: FC<IListCardsProps> = ({
     sx={{
       justifyContent: "space-between",
       alignItems: "center",
-      // backgroundColor: `${activeCard ? "red" : "white"}`,
+      backgroundColor: `${active ? "red" : "white"}`,
     }}
     // className={`${activeCard ? "active highlighted" : ""}`}
   >
