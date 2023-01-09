@@ -1,12 +1,7 @@
 import { IUser } from "../Interfaces/User"
-import { user } from "../API/user"
-import { transformMatch } from "./transformMatch"
 
 export const handleFilter = (stringValue: string, searchValue: string) =>
   stringValue.toLowerCase().includes(searchValue.toLowerCase())
-
-// export const handleFilterData = (userData: IUser[], searchValue: string) =>
-// userData.filter((user: IUser)=> handleFilter(user.id,searchValue))
 
 export const handleFilterItems = (items: string[], searchValue: string) => {
   const result = items

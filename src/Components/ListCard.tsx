@@ -7,28 +7,23 @@ import {
   Chip,
   Typography,
 } from "@mui/material"
-import React, { FC, useState } from "react"
+import { FC } from "react"
 import { red } from "@mui/material/colors"
 import parse from "html-react-parser"
 import { IUser } from "../Interfaces/User"
 
 interface IListCardsProps {
   userData: IUser
-  // activeCard: boolean
-  // onSelect: Functions
+  activeCard: boolean
 }
-const ListCard: FC<IListCardsProps> = ({
-  // activeCard,
-  userData,
-}) => (
+const ListCard: FC<IListCardsProps> = ({ activeCard, userData }) => (
   <Card
     key={userData.id}
     sx={{
       justifyContent: "space-between",
       alignItems: "center",
-      // backgroundColor: `${activeCard ? "red" : "white"}`,
+      backgroundColor: `${activeCard ? "red" : "white"}`,
     }}
-    // className={`${activeCard ? "active highlighted" : ""}`}
   >
     <CardActionArea
       sx={{
@@ -37,9 +32,6 @@ const ListCard: FC<IListCardsProps> = ({
         "&:hover": {
           background: "rgb(7, 177, 77, 0.42)",
         },
-        // "&:active": {
-        //   background: "rgb(5, 157, 77, 0.42)",
-        // },
       }}
     >
       <CardHeader

@@ -1,4 +1,4 @@
-import { FC, useRef } from "react"
+import { FC } from "react"
 import { Box } from "@mui/material"
 import { IUser } from "../Interfaces/User"
 import ErrorCard from "./ErrorCard"
@@ -8,15 +8,13 @@ import ListCard from "./ListCard"
 interface ISearchListProps {
   searchString: string
   filteredList: IUser[]
-  // activeCardIndex: number
+  activeCardIndex: number
 }
 const SearchList: FC<ISearchListProps> = ({
   searchString,
   filteredList,
-  // activeCardIndex,
+  activeCardIndex,
 }) => {
-  const resultList = useRef<HTMLElement>(null)
-
   return (
     <Box sx={{ overflowY: "scroll", maxHeight: 500 }}>
       {searchString && (
@@ -28,7 +26,6 @@ const SearchList: FC<ISearchListProps> = ({
             alignItems: "stretch",
             gap: 1,
           }}
-          ref={resultList}
         >
           {filteredList.length ? (
             filteredList.map((user: IUser, index: number) => {
@@ -36,7 +33,7 @@ const SearchList: FC<ISearchListProps> = ({
                 <ListCard
                   key={index}
                   userData={user}
-                  // activeCard={activeCardIndex === index ? true : false}
+                  activeCard={activeCardIndex === index ? true : false}
                 />
               )
             })

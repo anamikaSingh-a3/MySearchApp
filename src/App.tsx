@@ -5,7 +5,6 @@ import { user } from "./API/user"
 
 function App() {
   const placeholder = "Search user by id, name, item, address or pincode"
-  // const placeholder = "Search "
 
   return (
     <Box
@@ -13,9 +12,7 @@ function App() {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        // p: 5,
         minHeight: "80vh",
-        // width: "100vw",
         backgroundColor: "#282c34",
       }}
     >
