@@ -1,9 +1,9 @@
-import { FC } from "react"
-import { Box } from "@mui/material"
-import { IUser } from "../Interfaces/User"
 import ErrorCard from "./Cards/ErrorCard"
 import ErrorIcon from "@mui/icons-material/Error"
 import ListCard from "./Cards/ListCard"
+import { Box } from "@mui/material"
+import { FC } from "react"
+import { IUser } from "../Interfaces/User"
 
 interface ISearchListProps {
   searchString: string

@@ -1,11 +1,11 @@
-import SearchIcon from "@mui/icons-material/Search"
-import { Box, Container } from "@mui/material"
-import { FC, useState, useEffect } from "react"
-import { StyledInputBase } from "../StyledComponents/Search"
-import { IUser } from "../Interfaces/User"
 import CloseIcon from "@mui/icons-material/Close"
+import SearchIcon from "@mui/icons-material/Search"
 import SearchList from "./SearchList"
+import { Box, Container } from "@mui/material"
+import { FC, useEffect, useState } from "react"
 import { handleFilter } from "../Utility/filterSearchMatch"
+import { IUser } from "../Interfaces/User"
+import { StyledInputBase } from "../StyledComponents/Search"
 
 interface IProps {
   placeholder: string

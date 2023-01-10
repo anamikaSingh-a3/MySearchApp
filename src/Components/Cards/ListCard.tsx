@@ -1,3 +1,8 @@
+import parse from "html-react-parser"
+import { FC, useEffect, useState } from "react"
+import { IUser } from "../../Interfaces/User"
+import { red } from "@mui/material/colors"
+import { transformMatch } from "../../Utility/transformMatch"
 import {
   Avatar,
   Card,
@@ -7,11 +12,6 @@ import {
   Chip,
   Typography,
 } from "@mui/material"
-import { FC, useEffect, useState } from "react"
-import { red } from "@mui/material/colors"
-import parse from "html-react-parser"
-import { IUser } from "../../Interfaces/User"
-import { transformMatch } from "../../Utility/transformMatch"
 
 interface IListCardsProps {
   userData: IUser
