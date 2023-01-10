@@ -1,18 +1,18 @@
 import { FC } from "react"
 import { Box } from "@mui/material"
 import { IUser } from "../Interfaces/User"
-import ErrorCard from "./ErrorCard"
+import ErrorCard from "./Cards/ErrorCard"
 import ErrorIcon from "@mui/icons-material/Error"
-import ListCard from "./ListCard"
+import ListCard from "./Cards/ListCard"
 
 interface ISearchListProps {
   searchString: string
-  filteredList: IUser[]
+  searchResult: IUser[]
   activeCardIndex: number
 }
 const SearchList: FC<ISearchListProps> = ({
   searchString,
-  filteredList,
+  searchResult,
   activeCardIndex,
 }) => {
   return (
@@ -27,13 +27,14 @@ const SearchList: FC<ISearchListProps> = ({
             gap: 1,
           }}
         >
-          {filteredList.length ? (
-            filteredList.map((user: IUser, index: number) => {
+          {searchResult.length ? (
+            searchResult.map((user: IUser, index: number) => {
               return (
                 <ListCard
                   key={index}
                   userData={user}
                   activeCard={activeCardIndex === index ? true : false}
+                  searchString={searchString}
                 />
               )
             })

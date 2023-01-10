@@ -4,7 +4,6 @@ import { FC, useState, useEffect } from "react"
 import { StyledInputBase } from "../StyledComponents/Search"
 import { IUser } from "../Interfaces/User"
 import CloseIcon from "@mui/icons-material/Close"
-import { transformMatch } from "../Utility/transformMatch"
 import SearchList from "./SearchList"
 import { handleFilter } from "../Utility/filterSearchMatch"
 
@@ -18,35 +17,18 @@ const SearchBar: FC<IProps> = ({ placeholder, userData }) => {
   const [activeCard, setActiveCard] = useState<number>(0)
 
   useEffect(() => {
-    const result = userData
-      .filter(
-        (user: IUser) =>
-          handleFilter(user.name, searchValue) ||
-          handleFilter(user.id, searchValue) ||
-          handleFilter(user.address, searchValue) ||
-          handleFilter(user.pincode, searchValue)
+    const result = userData.filter((user: IUser) => {
+      user.items = user.items.filter((item) =>
+        item.toLowerCase().includes(searchValue.toLowerCase())
       )
-      .map((user) => {
-        let name = transformMatch(user.name, searchValue)
-        let id = transformMatch(user.id, searchValue)
-        let address = transformMatch(user.address, searchValue)
-        let pincode = transformMatch(user.pincode, searchValue)
-
-        let items = user.items.filter((item: string) =>
-          transformMatch(item, searchValue)
-        )
-        return {
-          ...user,
-          name,
-          id,
-          address,
-          pincode,
-          items,
-        }
-      })
-
-      .sort((a, b) => a.name.localeCompare(b.name))
-
+      return (
+        user.items.length > 0 ||
+        handleFilter(user.name, searchValue) ||
+        handleFilter(user.id, searchValue) ||
+        handleFilter(user.address, searchValue) ||
+        handleFilter(user.pincode, searchValue)
+      )
+    })
     setSearchResult(result)
   }, [searchValue, userData])
 
@@ -94,7 +76,7 @@ const SearchBar: FC<IProps> = ({ placeholder, userData }) => {
       />
       <SearchList
         searchString={searchValue}
-        filteredList={searchResult}
+        searchResult={searchResult}
         activeCardIndex={activeCard}
       />
     </Container>
